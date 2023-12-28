@@ -37,9 +37,9 @@
 #include <FastLED.h>
 
 // Set the number of LEDs.
-const int NUM_LEDS = 192;  // 99 for test strip
+const int NUM_LEDS = 192;           // Ignore this comment. 99 for my own test strip that I have setup on my desk
 
-// Set the pin numbers for the data LED, photoresistor, and bottom/top PIRs
+// Set the pin numbers for the data LED, LDR, and bottom/top PIRs
 const int DATA_PIN_LEDS = 16;
 const int PIR_BOTTOM_PIN = 17;
 const int PIR_TOP_PIN = 27;
@@ -72,16 +72,17 @@ void setup() {
 void loop() {
   // Read LDR value (ranges from 0 - 4095)
   int LDR = analogRead(LDR_PIN);
-  int brightness = map(LDR, LDR_MIN, LDR_MAX, MIN_BRIGHT, MAX_BRIGHT); // Map the analog value to brightness range
+  // Map the analog value to brightness range
+  int brightness = map(LDR, LDR_MIN, LDR_MAX, MIN_BRIGHT, MAX_BRIGHT); 
 
-  // Use this for debugging and to make sure you LDR is working correctly
+  // Uncomment next line to make sure your LDR is working correctly
   // Serial.println(brightness);
   
   // Clear any data in the LED strip
   FastLED.clear();
   // Turn on the LED strip with ambient brightness taken into account
   fill_palette(leds, NUM_LEDS, paletteIndex, 255 / NUM_LEDS, currentPalette, brightness, LINEARBLEND);
-  EVERY_N_MILLISECONDS (10) {
+  EVERY_N_MILLISECONDS (10) {   // Raise or lower this number to set the speed
     paletteIndex++;
   }
   FastLED.show();
@@ -97,7 +98,7 @@ void loop() {
     FastLED.setBrightness(halfBright);
     fill_solid(leds, NUM_LEDS, CRGB::Purple);
 
-    // Sequentially populate the LEDs with an increased brightness from the top to the bottom of the stairs
+    // Iterate over the LEDs with an increased brightness from the top to the bottom of the stairs
     for (int i = 0; i < NUM_LEDS; i++) {
       FastLED.setBrightness(brightness);
       leds[i] = CRGB::MediumPurple;
@@ -118,7 +119,7 @@ void loop() {
     FastLED.setBrightness(halfBright);
     fill_solid(leds, NUM_LEDS, CRGB::Purple);
 
-    // Sequentially populate the LEDs with an increased brightness from the bottom to the top of the stairs
+    // Iterate over the LEDs with an increased brightness from the bottom to the top of the stairs
     for (int i = (NUM_LEDS) - 1; i >= 0; i--) {
       FastLED.setBrightness(brightness);
       leds[i] = CRGB::MediumPurple;
