@@ -2,7 +2,7 @@
  * @file ESP32_Stair_Lights.ino
  *
  * @details
- * This Arduino project controls a WS2812B addressable LED strip installed on the wall
+ * This ESP32 project controls a WS2812B addressable LED strip installed on the wall
  * next to a staircase. The lighting is adjusted based on ambient light sensed by a
  * Light-Dependent Resistor (LDR), providing a dynamic brightness to the LEDs so they are
  * dimmer when it is darker and brighter when there is more light.
