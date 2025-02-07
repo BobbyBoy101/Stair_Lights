@@ -10,5 +10,9 @@ Video of it in action:
 
 [![YouTube](http://i.ytimg.com/vi/QVQQqClXHYo/hqdefault.jpg)](https://www.youtube.com/watch?v=QVQQqClXHYo)
 
+Wiring:
+
+![wiring](ESP32_HEX.jpg)
+
 Special thanks to Giovanni Aggiustatutto for their writeup on constructing the hexagons:
 https://www.instructables.com/DIY-Wooden-Nanoleaf-Light-Panels/
